@@ -30,8 +30,8 @@ import { DMessage } from '~/common/state/store-chats';
 import { InlineTextarea } from '~/common/components/InlineTextarea';
 import { KeyStroke } from '~/common/components/KeyStroke';
 import { Link } from '~/common/components/Link';
+import { adjustContentScaling, cssRainbowColorKeyframes, themeScalingMap } from '~/common/app.theme';
 import { copyToClipboard } from '~/common/util/clipboardUtils';
-import { cssRainbowColorKeyframes, themeScalingMap } from '~/common/app.theme';
 import { prettyBaseModel } from '~/common/util/modelUtils';
 import { useUIPreferencesStore } from '~/common/state/store-ui';
 import { useUXLabsStore } from '~/common/state/store-ux-labs';
@@ -64,6 +64,7 @@ const avatarIconSx = { width: 36, height: 36 };
 export function makeAvatar(messageAvatar: string | null, messageRole: DMessage['role'] | string, messageOriginLLM: string | undefined, messagePurposeId: SystemPurposeId | undefined, messageSender: string, messageTyping: boolean, size: 'sm' | undefined = undefined): React.JSX.Element {
   if (typeof messageAvatar === 'string' && messageAvatar)
     return <Avatar alt={messageSender} src={messageAvatar} />;
+
   const mascotSx = size === 'sm' ? avatarIconSx : { width: 64, height: 64 };
   switch (messageRole) {
     case 'system':
@@ -76,17 +77,18 @@ export function makeAvatar(messageAvatar: string | null, messageRole: DMessage['
       // typing gif (people seem to love this, so keeping it after april fools')
       const isTextToImage = messageOriginLLM === 'DALL·E' || messageOriginLLM === 'Prodia';
       const isReact = messageOriginLLM?.startsWith('react-');
-      if (messageTyping) {
+
+      // animation: message typing
+      if (messageTyping)
         return <Avatar
           alt={messageSender} variant='plain'
-          src={isTextToImage ? 'https://i.giphy.com/media/5t9ujj9cMisyVjUZ0m/giphy.webp'
-            : isReact ? 'https://i.giphy.com/media/l44QzsOLXxcrigdgI/giphy.webp'
-              : 'https://i.giphy.com/media/jJxaUysjzO9ri/giphy.webp'}
+          src={isTextToImage ? 'https://i.giphy.com/media/5t9ujj9cMisyVjUZ0m/giphy.webp' // brush
+            : isReact ? 'https://i.giphy.com/media/l44QzsOLXxcrigdgI/giphy.webp' // mind
+              : 'https://i.giphy.com/media/jJxaUysjzO9ri/giphy.webp'} // typing
           sx={{ ...mascotSx, borderRadius: 'sm' }}
         />;
-      }
 
-      // text-to-image: icon
+      // icon: text-to-image
       if (isTextToImage)
         return <FormatPaintIcon sx={{
           ...avatarIconSx,
@@ -95,15 +97,16 @@ export function makeAvatar(messageAvatar: string | null, messageRole: DMessage['
 
       // purpose symbol (if present)
       const symbol = SystemPurposes[messagePurposeId!]?.symbol;
-      if (symbol) return <Box sx={{
-        fontSize: '24px',
-        textAlign: 'center',
-        width: '100%',
-        minWidth: `${avatarIconSx.width}px`,
-        lineHeight: `${avatarIconSx.height}px`,
-      }}>
-        {symbol}
-      </Box>;
+      if (symbol)
+        return <Box sx={{
+          fontSize: '24px',
+          textAlign: 'center',
+          width: '100%',
+          minWidth: `${avatarIconSx.width}px`,
+          lineHeight: `${avatarIconSx.height}px`,
+        }}>
+          {symbol}
+        </Box>;
 
       // default assistant avatar
       return <SmartToyOutlinedIcon sx={avatarIconSx} />; // https://mui.com/static/images/avatar/2.jpg
@@ -189,7 +192,9 @@ export function ChatMessage(props: {
   isBottom?: boolean,
   isImagining?: boolean,
   isSpeaking?: boolean,
-  blocksShowDate?: boolean,
+  showAvatar?: boolean, // auto if undefined
+  showBlocksDate?: boolean,
+  adjustContentScaling?: number,
   onConversationBranch?: (messageId: string) => void,
   onConversationRestartFrom?: (messageId: string, offset: number, chatEffectBeam: boolean) => Promise<void>,
   onConversationTruncate?: (messageId: string) => void,
@@ -210,9 +215,9 @@ export function ChatMessage(props: {
 
   // external state
   const labsChatBeam = useUXLabsStore(state => state.labsChatBeam);
-  const { cleanerLooks, contentScaling, doubleClickToEdit, renderMarkdown } = useUIPreferencesStore(state => ({
-    cleanerLooks: state.zenMode === 'cleaner',
-    contentScaling: state.contentScaling,
+  const { showAvatar, contentScaling, doubleClickToEdit, renderMarkdown } = useUIPreferencesStore(state => ({
+    showAvatar: props.showAvatar !== undefined ? props.showAvatar : state.zenMode !== 'cleaner',
+    contentScaling: adjustContentScaling(state.contentScaling, props.adjustContentScaling),
     doubleClickToEdit: state.doubleClickToEdit,
     renderMarkdown: state.renderMarkdown,
   }), shallow);
@@ -236,8 +241,6 @@ export function ChatMessage(props: {
   const fromAssistant = messageRole === 'assistant';
   const fromSystem = messageRole === 'system';
   const wasEdited = !!messageUpdated;
-
-  const showAvatars = !cleanerLooks;
 
   const textSel = selMenuText ? selMenuText : messageText;
   const isSpecialT2I = textSel.startsWith('https://images.prodia.xyz/') || textSel.startsWith('/draw ') || textSel.startsWith('/imagine ') || textSel.startsWith('/img ');
@@ -399,8 +402,8 @@ export function ChatMessage(props: {
 
   // avatar
   const avatarEl: React.JSX.Element | null = React.useMemo(
-    () => showAvatars ? makeAvatar(messageAvatar, messageRole, messageOriginLLM, messagePurposeId, messageSender, messageTyping) : null,
-    [messageAvatar, messageOriginLLM, messagePurposeId, messageRole, messageSender, messageTyping, showAvatars],
+    () => showAvatar ? makeAvatar(messageAvatar, messageRole, messageOriginLLM, messagePurposeId, messageSender, messageTyping) : null,
+    [messageAvatar, messageOriginLLM, messagePurposeId, messageRole, messageSender, messageTyping, showAvatar],
   );
 
 
@@ -421,7 +424,7 @@ export function ChatMessage(props: {
     >
 
       {/* Avatar */}
-      {showAvatars && (
+      {showAvatar && (
         <Box
           onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}
           onClick={event => setOpsMenuAnchor(event.currentTarget)}
@@ -477,7 +480,7 @@ export function ChatMessage(props: {
           isBottom={props.isBottom}
           renderTextAsMarkdown={renderMarkdown}
           renderTextDiff={textDiffs || undefined}
-          showDate={props.blocksShowDate === true ? messageUpdated || messageCreated || undefined : undefined}
+          showDate={props.showBlocksDate === true ? messageUpdated || messageCreated || undefined : undefined}
           wasUserEdited={wasEdited}
           onContextMenu={(props.onMessageEdit && ENABLE_SELECTION_RIGHT_CLICK_MENU) ? handleBlocksContextMenu : undefined}
           onDoubleClick={(props.onMessageEdit && doubleClickToEdit) ? handleBlocksDoubleClick : undefined}
@@ -600,7 +603,7 @@ export function ChatMessage(props: {
                     <KeyStroke combo='Ctrl + Shift + R' />
                   </Box>}
               {labsChatBeam && (
-                <Tooltip title={messageTyping ? null : 'Best-Of'}>
+                <Tooltip title={messageTyping ? null : 'Beam'}>
                   <IconButton
                     size='sm'
                     variant='outlined' color='primary'
