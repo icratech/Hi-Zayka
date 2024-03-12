@@ -11,6 +11,7 @@ import { imaginePromptFromText } from '~/modules/aifn/imagine/imaginePromptFromT
 import { speakText } from '~/modules/elevenlabs/elevenlabs.client';
 import { useCapabilityTextToImage } from '~/modules/t2i/t2i.client';
 
+import { BeamView } from '~/common/beam/BeamView';
 import { Brand } from '~/common/app.config';
 import { ConfirmationModal } from '~/common/components/ConfirmationModal';
 import { GlobalShortcutItem, ShortcutKeyName, useGlobalShortcuts } from '~/common/components/useGlobalShortcut';
@@ -25,7 +26,6 @@ import { useOptimaLayout, usePluggableOptimaLayout } from '~/common/layout/optim
 import { useUIPreferencesStore } from '~/common/state/store-ui';
 
 import type { ComposerOutputMultiPart } from './components/composer/composer.types';
-import { BeamView } from './components/beam/BeamView';
 import { ChatDrawerMemo } from './components/ChatDrawer';
 import { ChatDropdowns } from './components/ChatDropdowns';
 import { ChatMessageList } from './components/ChatMessageList';
@@ -469,6 +469,7 @@ export function AppChat() {
       {chatPanes.map((pane, idx) => {
         const _paneConversationId = pane.conversationId;
         const _paneChatHandler = chatHandlers[idx] ?? null;
+        const _paneChatBeamStore = _paneChatHandler?.getBeamStore() ?? null;
         const _panesCount = chatPanes.length;
         const _keyAndId = `chat-pane-${pane.paneId}`;
         const _sepId = `sep-pane-${idx}`;
@@ -557,19 +558,15 @@ export function AppChat() {
 
             </ScrollToBottom>
 
-            {!!_paneChatHandler && (
+            {!!_paneChatBeamStore && (
               <BeamView
-                key={`beam-${_paneConversationId}` /* used to invalidate state when switching chats */}
-                conversationHandler={_paneChatHandler}
+                beamStore={_paneChatBeamStore}
                 isMobile={isMobile}
                 sx={{
-                  overflowY: 'auto',
                   backgroundColor: 'background.level1',
-                  // backgroundColor: `rgba(${theme.vars.palette.neutral.lightChannel} / 0.9)`,
-                  // backdropFilter: 'blur(6px)',
                   position: 'absolute',
                   inset: 0,
-                  zIndex: 1, // stay on top of Chips :shrug:
+                  zIndex: 10, // stay on top of Message > Chips (:1), and Overlays (:2) :shrug:
                 }}
               />
             )}
@@ -600,7 +597,7 @@ export function AppChat() {
       onTextImagine={handleTextImagine}
       setIsMulticast={setIsComposerMulticast}
       sx={{
-        zIndex: 21, // position: 'sticky', bottom: 0,
+        zIndex: 51, // just to allocate a surface, and potentially have a shadow
         backgroundColor: themeBgAppChatComposer,
         borderTop: `1px solid`,
         borderTopColor: 'divider',

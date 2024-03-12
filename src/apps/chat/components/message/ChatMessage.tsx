@@ -30,7 +30,8 @@ import { DMessage } from '~/common/state/store-chats';
 import { InlineTextarea } from '~/common/components/InlineTextarea';
 import { KeyStroke } from '~/common/components/KeyStroke';
 import { Link } from '~/common/components/Link';
-import { adjustContentScaling, cssRainbowColorKeyframes, themeScalingMap } from '~/common/app.theme';
+import { adjustContentScaling, themeScalingMap } from '~/common/app.theme';
+import { animationColorRainbow } from '~/common/util/animUtils';
 import { copyToClipboard } from '~/common/util/clipboardUtils';
 import { prettyBaseModel } from '~/common/util/modelUtils';
 import { useUIPreferencesStore } from '~/common/state/store-ui';
@@ -92,7 +93,7 @@ export function makeAvatar(messageAvatar: string | null, messageRole: DMessage['
       if (isTextToImage)
         return <FormatPaintIcon sx={{
           ...avatarIconSx,
-          animation: `${cssRainbowColorKeyframes} 1s linear 2.66`,
+          animation: `${animationColorRainbow} 1s linear 2.66`,
         }} />;
 
       // purpose symbol (if present)
@@ -195,6 +196,7 @@ export function ChatMessage(props: {
   showAvatar?: boolean, // auto if undefined
   showBlocksDate?: boolean,
   adjustContentScaling?: number,
+  topDecorator?: React.ReactNode,
   onConversationBranch?: (messageId: string) => void,
   onConversationRestartFrom?: (messageId: string, offset: number, chatEffectBeam: boolean) => Promise<void>,
   onConversationTruncate?: (messageId: string) => void,
@@ -410,18 +412,33 @@ export function ChatMessage(props: {
   return (
     <ListItem
       sx={{
-        display: 'flex', flexDirection: !fromAssistant ? 'row-reverse' : 'row', alignItems: 'flex-start',
-        gap: { xs: 0, md: 1 },
+        // style
+        backgroundColor: backgroundColor,
         px: { xs: 1, md: themeScalingMap[contentScaling]?.chatMessagePadding ?? 2 },
         py: themeScalingMap[contentScaling]?.chatMessagePadding ?? 2,
-        backgroundColor,
-        borderBottom: '1px solid',
-        borderBottomColor: 'divider',
-        ...(ENABLE_COPY_MESSAGE_OVERLAY && { position: 'relative' }),
+        ...(!('borderBottom' in (props.sx || {})) && {
+          borderBottom: '1px solid',
+          borderBottomColor: 'divider',
+        }),
+        ...(!!props.topDecorator && { pt: '3rem' }),
         '&:hover > button': { opacity: 1 },
+
+        // layout
+        display: 'flex',
+        flexDirection: !fromAssistant ? 'row-reverse' : 'row',
+        alignItems: 'flex-start',
+        gap: { xs: 0, md: 1 },
+
         ...props.sx,
       }}
     >
+
+      {/* (Optional) underlayed top decorator */}
+      {props.topDecorator && (
+        <Box sx={{ position: 'absolute', left: 0, right: 0, top: 0, textAlign: 'center' }}>
+          {props.topDecorator}
+        </Box>
+      )}
 
       {/* Avatar */}
       {showAvatar && (
@@ -450,7 +467,7 @@ export function ChatMessage(props: {
             <Tooltip title={messageTyping ? null : (messageOriginLLM || 'unk-model')} variant='solid'>
               <Typography level='body-xs' sx={{
                 overflowWrap: 'anywhere',
-                ...(messageTyping ? { animation: `${cssRainbowColorKeyframes} 5s linear infinite` } : {}),
+                ...(messageTyping ? { animation: `${animationColorRainbow} 5s linear infinite` } : {}),
               }}>
                 {prettyBaseModel(messageOriginLLM)}
               </Typography>
