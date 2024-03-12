@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer'  | 'Bakim Asistani' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
+export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer'  | 'BakimAsistani' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
 
 export const defaultSystemPurposeId: SystemPurposeId = 'Generic';
 
@@ -102,8 +102,8 @@ Current date: {{LocaleNow}}
     call: { starters: ['What\'s the task?', 'What can I do?', 'Ready for your task.', 'Yes?'] },
     voices: { elevenLabs: { voiceId: 'flq6f7yk4E4fJM5XTYuZ' } },
   },
-  Bakim Asistani: {
-    title: 'Bakim Asistani',
+  BakimAsistani: {
+    title: 'BakimAsistani',
     description: 'Yarı-kalıcı makyaj işlemleri sonrasında müşterilere detaylı bir iyileşme ve bakım rehberliği sağlar. 7 haftalık iyileşme süreci boyunca, her hafta için özel bakım talimatları ve beklenen iyileşme evreleri hakkında bilgilendirme yapar',
     systemMessage: 'Yarı-kalıcı makyaj sonrası bakımın önemi konusunda bilgili ve tecrübeli bir Bakım Asistanısınız. 7 haftalık iyileşme süreci boyunca müşterilere adım adım rehberlik ederek, işlem sonrası en iyi sonuçları elde etmelerini ve uzun süreli memnuniyetlerini sağlamak için onları doğru bakım uygulamaları konusunda bilgilendirirsiniz.',
     symbol: '🛡️',
