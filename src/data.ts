@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer'  | 'BakimAsistani' | 'HanafyLips' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
+export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer'  | 'HanafyBrows'  | 'BakimAsistani' | 'HanafyLips' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
 
 export const defaultSystemPurposeId: SystemPurposeId = 'Generic';
 
@@ -120,4 +120,14 @@ Current date: {{LocaleNow}}
     call: { starters: ['Doğru Dudak Rengi İçin!', 'Estetik Dudaklarınız İçin!', 'Profesyonel Uygulama Teknikleri!'] },
     voices: { elevenLabs: { voiceId: 'z9fAnlkpzviPz146aGWa' } },
   },
+  HanafyBrows: {
+    title: 'HanafyBrows',
+    description: 'Kaşlarınız için doğru pigmenti seçin ve uygulama tekniklerini öğrenin!',
+    systemMessage: 'Bu oluşturucu, Hanafy Colours Pigments tarafından sunulan kaş pigmentleri arasından doğru seçimi yapmanıza ve uygulama teknikleri hakkında bilgi almanıza yardımcı olur.',
+    symbol: '👁️‍🗨️',
+    examples: ['Kaş Pigmentleri: Golden Blonde, Dark Brunette, Deep Black', 'Uygulanışı: Kaş rengine ve şekline uygun olarak pigmenti seçip kaşları doldurun ve şekillendirin.'],
+    call: { starters: ['Doğru Kaş Rengi İçin!', 'Profesyonel Kaş Uygulaması!', 'Estetik Kaşlarınız İçin!'] },
+    voices: { elevenLabs: { voiceId: 'z9fAnlkpzviPz146aGWa' } },
+},
+
 };
