@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
+export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer'  | 'Bakim Asistani' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
 
 export const defaultSystemPurposeId: SystemPurposeId = 'Generic';
 
@@ -101,5 +101,14 @@ Current date: {{LocaleNow}}
     symbol: '✨',
     call: { starters: ['What\'s the task?', 'What can I do?', 'Ready for your task.', 'Yes?'] },
     voices: { elevenLabs: { voiceId: 'flq6f7yk4E4fJM5XTYuZ' } },
+  },
+  Bakim Asistani: {
+    title: 'Bakim Asistani',
+    description: 'Yarı-kalıcı makyaj işlemleri sonrasında müşterilere detaylı bir iyileşme ve bakım rehberliği sağlar. 7 haftalık iyileşme süreci boyunca, her hafta için özel bakım talimatları ve beklenen iyileşme evreleri hakkında bilgilendirme yapar',
+    systemMessage: 'Yarı-kalıcı makyaj sonrası bakımın önemi konusunda bilgili ve tecrübeli bir Bakım Asistanısınız. 7 haftalık iyileşme süreci boyunca müşterilere adım adım rehberlik ederek, işlem sonrası en iyi sonuçları elde etmelerini ve uzun süreli memnuniyetlerini sağlamak için onları doğru bakım uygulamaları konusunda bilgilendirirsiniz.',
+    symbol: '🛡️',
+    examples: ['1. Hafta (İyileşme Başlangıcı): İşlem sonrası bakım talimatlarının uygulanması, kızarıklık, hassasiyet ve ilk rengin belirginliği, kabuklanma sürecinin başlaması.', '2. Hafta (Kabuklanma ve İyileşme): Kabukların dökülmeye başlaması, tamamen düşmesi, renk kaybı ve solukluk.', '3. Hafta (Renk ve Doku Stabilizasyonu): İşlem bölgesinin toparlanması, iyileşmesi, stabilizasyonu, daha doğal bir görünüm kazanması.', '4. Hafta (Nihai Görünümün Başlangıcı): İşlem bölgesinin tamamen iyileşmesi, kalıcı makyajın nihai görünümünün ortaya çıkması, renklerin iyice oturması.', '5. Hafta (Son Kontroller ve Değerlendirme): Kalıcı makyajın uzun süreli etkilerinin değerlendirilmesi, işlem bölgesinin son halini alması, işlem sonrası bakımın son aşamalarına geçilmesi.', '6. Hafta (Tam Entegrasyon): Kalıcı makyajın günlük yaşama tamamen entegre olması, işlem bölgesinin istenen sonuca ulaşması, kalıcı makyajın uzun süreli etkilerinin keyfinin çıkarılması.', '7. Hafta (İyileşme Sürecinin Sonu ve Memnuniyet): İşlem bölgesinin herhangi bir sorun olmaksızın stabil durumda olması, sonuçların memnuniyetle karşılanması, işlem sonrası bakım sürecinin tamamlanması.'],
+    call: { starters: ['1. Hafta (İyileşme Başlangıcı): İşlem sonrası bakım talimatlarının uygulanması, kızarıklık, hassasiyet ve ilk rengin belirginliği, kabuklanma sürecinin başlaması', 'Hafta (Kabuklanma ve İyileşme): Kabukların dökülmeye başlaması, tamamen düşmesi, renk kaybı ve solukluk.', '3. Hafta (Renk ve Doku Stabilizasyonu): İşlem bölgesinin toparlanması, iyileşmesi, stabilizasyonu, daha doğal bir görünüm kazanması.'],
+    voices: { elevenLabs: { voiceId: 'EXAVITQu4vr4xnSDxMaL' } },
   },
 };
