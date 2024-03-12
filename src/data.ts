@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer'  | 'BakimAsistani' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
+export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer'  | 'BakimAsistani' | 'HanafyLips' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
 
 export const defaultSystemPurposeId: SystemPurposeId = 'Generic';
 
@@ -110,5 +110,14 @@ Current date: {{LocaleNow}}
     examples: ['1. Hafta (İyileşme Başlangıcı): İşlem sonrası bakım talimatlarının uygulanması, kızarıklık, hassasiyet ve ilk rengin belirginliği, kabuklanma sürecinin başlaması.', '2. Hafta (Kabuklanma ve İyileşme): Kabukların dökülmeye başlaması, tamamen düşmesi, renk kaybı ve solukluk.', '3. Hafta (Renk ve Doku Stabilizasyonu): İşlem bölgesinin toparlanması, iyileşmesi, stabilizasyonu, daha doğal bir görünüm kazanması.', '4. Hafta (Nihai Görünümün Başlangıcı): İşlem bölgesinin tamamen iyileşmesi, kalıcı makyajın nihai görünümünün ortaya çıkması, renklerin iyice oturması.', '5. Hafta (Son Kontroller ve Değerlendirme): Kalıcı makyajın uzun süreli etkilerinin değerlendirilmesi, işlem bölgesinin son halini alması, işlem sonrası bakımın son aşamalarına geçilmesi.', '6. Hafta (Tam Entegrasyon): Kalıcı makyajın günlük yaşama tamamen entegre olması, işlem bölgesinin istenen sonuca ulaşması, kalıcı makyajın uzun süreli etkilerinin keyfinin çıkarılması.', '7. Hafta (İyileşme Sürecinin Sonu ve Memnuniyet): İşlem bölgesinin herhangi bir sorun olmaksızın stabil durumda olması, sonuçların memnuniyetle karşılanması, işlem sonrası bakım sürecinin tamamlanması.'],
     call: { starters: ['What\'s the task?', 'What can I do?', 'Ready for your task.', 'Yes?'] },
     voices: { elevenLabs: { voiceId: 'EXAVITQu4vr4xnSDxMaL' } },
+  },
+  HanafyLips: {
+    title: 'HanafyLips',
+    description: 'Hanafy Colours Pigments tarafından sunulan dudak pigmentleri arasından doğru seçimi yapın ve uygulama tekniklerini öğrenin!',
+    systemMessage: 'Bu oluşturucu, Hanafy Colours Pigments tarafından sunulan dudak pigmentleri arasından doğru seçimi yapmanıza ve uygulama teknikleri hakkında bilgi almanıza yardımcı olur.',
+    symbol: '💋',
+    examples: ['Dudak Pigmentleri: Coral, Rose, Peach', 'Uygulanışı: Dudak konturuna uygun olarak pigmenti seçip dudak rengini doğal ve estetik bir şekilde artırın.'],
+    call: { starters: ['Doğru Dudak Rengi İçin!', 'Estetik Dudaklarınız İçin!', 'Profesyonel Uygulama Teknikleri!'] },
+    voices: { elevenLabs: { voiceId: 'z9fAnlkpzviPz146aGWa' } },
   },
 };
