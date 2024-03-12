@@ -1,11 +1,11 @@
   # Hi-Zayka 🧠✨
 
-Welcome to big-AGI 👋, the GPT application for professionals that need function, form,
+Welcome to zarina-AGI 👋, the GPT application for professionals that need function, form,
 simplicity, and speed. Powered by the latest models from 12 vendors and
-open-source model servers, `big-AGI` offers best-in-class Voice and Chat with AI Personas,
+open-source model servers, `zarina-AGI` offers best-in-class Voice and Chat with AI Personas,
 visualizations, coding, drawing, calling, and quite more -- all in a polished UX.
 
-Pros use big-AGI. 🚀 Developers love big-AGI. 🤖
+Pros use zarina-AGI. 🚀 Developers love zarina-AGI. 🤖
 
 [![Official Website](https://img.shields.io/badge/BIG--AGI.com-%23096bde?style=for-the-badge&logo=vercel&label=launch)](https://big-agi.com)
 
@@ -15,7 +15,7 @@ Or fork & run on Vercel
 
 ## 👉 [roadmap](https://github.com/users/enricoros/projects/4/views/2) 👉 [documentation](docs/README.md)
 
-big-AGI is an open book; see the **[ready-to-ship and future ideas](https://github.com/users/enricoros/projects/4/views/2)** in our open roadmap
+zarina-AGI is an open book; see the **[ready-to-ship and future ideas](https://github.com/users/enricoros/projects/4/views/2)** in our open roadmap
 
 ### What's New in 1.14.1 · March 7, 2024 · Modelmorphic
 
@@ -164,7 +164,7 @@ files for changes):
 
 ```bash
 git clone https://github.com/enricoros/big-agi.git
-cd big-agi
+cd zarina-agi
 npm install
 npm run dev
 
