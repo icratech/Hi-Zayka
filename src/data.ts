@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer'  | 'HanafyBrows'  | 'BakimAsistani' | 'HanafyLips' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
+export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer'  | 'HanafyBrows'  | 'PmuNeedle'  | 'BakimAsistani' | 'HanafyLips' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
 
 export const defaultSystemPurposeId: SystemPurposeId = 'Generic';
 
@@ -128,6 +128,14 @@ Current date: {{LocaleNow}}
     examples: ['Kaş Pigmentleri: Golden Blonde, Dark Brunette, Deep Black', 'Uygulanışı: Kaş rengine ve şekline uygun olarak pigmenti seçip kaşları doldurun ve şekillendirin.'],
     call: { starters: ['Doğru Kaş Rengi İçin!', 'Profesyonel Kaş Uygulaması!', 'Estetik Kaşlarınız İçin!'] },
     voices: { elevenLabs: { voiceId: 'z9fAnlkpzviPz146aGWa' } },
-},
-
+  },
+  PmuNeedle: {
+    title: ' PmuNeedle',
+    description: 'Kalıcı makyajda doğru iğne seçimi ve uygulama teknikleri hakkında bilgi alın!',
+    systemMessage: 'Bu oluşturucu, kalıcı makyajda doğru iğne çeşitlerini seçme ve uygulama teknikleri hakkında bilgi almanıza yardımcı olur. İğne tipleri, kullanım alanları ve uygulama yöntemleri hakkında bilgi verir.',
+    symbol: '💉',
+    examples: ['İğne Çeşitleri: Yuvarlak İğne, Düz İğne, Mikro İğne', 'Kullanım Alanları: Kaş, Dudak, Göz', 'Uygulama Teknikleri: Prensipal, Lineer, Dolgulu'],
+    call: { starters: ['Doğru İğne Seçimi Yapın!', 'Profesyonel Uygulama Teknikleri!', 'Kalıcı Makyajda Güvenliğinizi Sağlayın!'] },
+    voices: { elevenLabs: { voiceId: 'z9fAnlkpzviPz146aGWa' } },
+  },
 };
