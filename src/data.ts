@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer'  | 'HanafyBrows'  | 'PmuNeedle'  | 'BakimAsistani' | 'HanafyLips' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
+export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer'  | 'YouTubeAds'  | 'InstagramAds'  | 'FacebookAds' | 'HanafyBrows'  | 'PmuNeedle'  | 'BakimAsistani' | 'HanafyLips' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
 
 export const defaultSystemPurposeId: SystemPurposeId = 'Generic';
 
@@ -136,6 +136,33 @@ Current date: {{LocaleNow}}
     symbol: '💉',
     examples: ['İğne Çeşitleri: Yuvarlak İğne, Düz İğne, Mikro İğne', 'Kullanım Alanları: Kaş, Dudak, Göz', 'Uygulama Teknikleri: Prensipal, Lineer, Dolgulu'],
     call: { starters: ['Doğru İğne Seçimi Yapın!', 'Profesyonel Uygulama Teknikleri!', 'Kalıcı Makyajda Güvenliğinizi Sağlayın!'] },
+    voices: { elevenLabs: { voiceId: 'z9fAnlkpzviPz146aGWa' } },
+  },
+  YouTubeAds: {
+    title: 'YouTubeAds',
+    description: 'YouTube video reklamı oluşturarak kalıcı makyaj hizmetinizi geniş kitlelere tanıtın!',
+    systemMessage: 'Bu oluşturucu, YouTube video reklamı oluşturarak kalıcı makyaj hizmetinizi potansiyel müşterilere tanıtmanıza yardımcı olur. Reklam başlığı, metni ve hedef kitlenizi belirlemenize yardımcı olur.',
+    symbol: '📹',
+    examples: ['Başlık: Kalıcı Makyajda Uzman Eller!', 'Metin: Güzelliğinizi Kalıcı Hale Getirin!', 'Hedef Kitle: Güzellik ve Bakım İlgi Alanlarına Sahip Kadınlar'],
+    call: { starters: ['Reklamınızı Oluşturun!', 'Potansiyel Müşterilere Ulaşın!', 'Şimdi Dikkat Çekin!'] },
+    voices: { elevenLabs: { voiceId: 'z9fAnlkpzviPz146aGWa' } },
+  },
+  FacebookAds: {
+    title: 'FacebookAds',
+    description: 'Facebook Business reklamı oluşturarak kalıcı makyaj hizmetinizi geniş kitlelere tanıtın!',
+    systemMessage: 'Bu oluşturucu, Facebook Business reklamı oluşturarak kalıcı makyaj hizmetinizi potansiyel müşterilere tanıtmanıza yardımcı olur. Reklam başlığı, metni ve hedef kitleyi belirlemenize yardımcı olur.',
+    symbol: '📢',
+    examples: ['Başlık: Mükemmel Görünüm İçin Kalıcı Makyaj!', 'Metin: Güzelliğinizi Kalıcı Hale Getirin!', 'Hedef Kitle: Güzellik ve Bakım İlgi Alanlarına Sahip Kadınlar'],
+    call: { starters: ['Reklamınızı Oluşturun!', 'Potansiyel Müşterilere Ulaşın!', 'Şimdi Dikkat Çekin!'] },
+    voices: { elevenLabs: { voiceId: 'z9fAnlkpzviPz146aGWa' } },
+  },
+  InstagramAds: {
+    title: 'InstagramAds',
+    description: 'Potansiyel müşterilere kalıcı makyaj hizmetinizi tanıtmak için etkili bir Instagram reklamı oluşturun!',
+    systemMessage: 'Bu oluşturucu, kalıcı makyaj hizmetinizi tanıtmak için Instagram reklamı oluşturmanıza yardımcı olur. Metin, reklam başlıkları, açıklamaları ve çağrı-to-action'ları içerir.',
+    symbol: '💼',
+    examples: ['Başlık: Doğal Güzellik İçin Kalıcı Makyaj!', 'Açıklama: Kalıcı makyaj ile zamandan tasarruf edin ve her zaman mükemmel görünün!', 'Çağrı-To-Action: Şimdi rezervasyon yapın ve güzelliğinize yatırım yapın!'],
+    call: { starters: ['Reklamınızı Oluşturun!', 'Potansiyel Müşterilere Ulaşın!', 'Şimdi Dikkat Çekin!'] },
     voices: { elevenLabs: { voiceId: 'z9fAnlkpzviPz146aGWa' } },
   },
 };
