@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer'  | 'YouTubeAds'  | 'InstagramAds' | 'FacebookAds' | 'HanafyBrows'  | 'PmuNeedle'  | 'BakimAsistani' | 'HanafyLips' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
+export type SystemPurposeId = 'Catalyst' | 'Custom' | 'Artist' | 'Developer'  | 'YouTubeAds'  | 'InstaReklam' | 'HanafyCorector' | 'FacebookAds' | 'HanafyBrows'  | 'PmuNeedle'  | 'BakimAsistani' | 'HanafyLips' | 'DeveloperPreview' | 'Pigmentologist' | 'Generic' | 'Scientist';
 
 export const defaultSystemPurposeId: SystemPurposeId = 'Generic';
 
@@ -129,8 +129,17 @@ Current date: {{LocaleNow}}
     call: { starters: ['Doğru Kaş Rengi İçin!', 'Profesyonel Kaş Uygulaması!', 'Estetik Kaşlarınız İçin!'] },
     voices: { elevenLabs: { voiceId: 'z9fAnlkpzviPz146aGWa' } },
   },
+  HanafyCorector: {
+    title: 'HanafyCorector',
+    description: 'Cilt tonu düzeltmeleri için doğru corector pigmentleri seçin ve uygulama tekniklerini öğrenin!',
+    systemMessage: 'Bu oluşturucu, Hanafy Colours Pigments tarafından sunulan corector pigmentleri arasından doğru seçimi yapmanıza ve uygulama teknikleri hakkında bilgi almanıza yardımcı olur.',
+    symbol: '🎨',
+    examples: ['Corector Pigmentleri: Yoğun Turuncu Renk Tonu (Corector1), Mor tonları düzeltmek için (Corector2), Zeytin Rengi (Corector3)'],
+    call: { starters: ['Doğru Corector Pigmenti İçin!', 'Profesyonel Cilt Tonu Düzeltme!', 'Mükemmel Cilt Tonu İçin!'] },
+    voices: { elevenLabs: { voiceId: 'z9fAnlkpzviPz146aGWa' } },
+  },
   PmuNeedle: {
-    title: ' PmuNeedle',
+    title: 'PmuNeedle',
     description: 'Kalıcı makyajda doğru iğne seçimi ve uygulama teknikleri hakkında bilgi alın!',
     systemMessage: 'Bu oluşturucu, kalıcı makyajda doğru iğne çeşitlerini seçme ve uygulama teknikleri hakkında bilgi almanıza yardımcı olur. İğne tipleri, kullanım alanları ve uygulama yöntemleri hakkında bilgi verir.',
     symbol: '💉',
@@ -156,7 +165,7 @@ Current date: {{LocaleNow}}
     call: { starters: ['Reklamınızı Oluşturun!', 'Potansiyel Müşterilere Ulaşın!', 'Şimdi Dikkat Çekin!'] },
     voices: { elevenLabs: { voiceId: 'z9fAnlkpzviPz146aGWa' } },
   },
-  InstagramAds: {
+  InstaReklam: {
     title: 'InstagramAds',
     description: 'Potansiyel müşterilere kalıcı makyaj hizmetinizi tanıtmak için etkili bir Instagram reklamı oluşturun!',
     systemMessage: 'Bu oluşturucu, kalıcı makyaj hizmetinizi tanıtmak için Instagram reklamı oluşturmanıza yardımcı olur. Metin, reklam başlıkları, açıklamaları ve çağrı-to-action ları içerir.',
